@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
 }
 
 @theme inline {
@@ -14,13 +15,172 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: hsl(0, 0%, 74%);
+    --foreground: hsl(0, 0%, 23%);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sands-serifo;
+  font-size: .75rem;
+}
+
+/* 10 bg.png*/
+.background{
+  background: url('./images/bg.png');
+  background-position-y:top 10%; 
+  background-size: cover;
+  height: 200px;
+  
+}
+
+.background2{
+  background: url('./images/bg2.png');
+  background-position-y:top 83%;
+  background-size: cover;
+  height: 200px;
+}
+.background3{
+  background: url('./images/bg.png');
+  background-position-y:top 0%;
+  background-size: cover;
+  height: 170px;
+}
+
+@media(min-width:55rem) {
+  .background{
+    height:200px;
+    background-position-y:top 40%;
+  }
+  .background3{
+  background: url('./images/bg.png');
+  background-position-y:top 0%;
+  background-size: cover;
+  height: 200px;
+}
+}
+@media(min-width:55rem) {
+  .background2{
+    height:19rem;
+    background-position-y:top 80%;
+  }
+
+}
+
+.glass2{
+  background-color: hsla(210, 80%, 10%, .9);
+  border-radius: 6px;
+  border:  1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rbgba(0,0,0,0.1);
+  color:#f8f8f8
+}
+
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  width:250px;
+
+}
+
+
+.grid-item{
+  aspect-ratio:1;
+  background:hsl(240, 20%, 30%);
+  border-radius:10px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  box-shadow: 3px 5px 5px rgba(0,0,0,0,0.15);
+  
+
+}
+
+
+
+.item-2{
+  background-image: url('./images/honda.jpg');
+  background-size:cover;
+  background-position-y: top 40% ;
+  
+}
+.item-3{
+  background-image: url('./images/2018_S4_engine.webp');
+  background-size:cover;
+  background-position-y:top 40% ;
+}
+
+.item-4{
+  background-image: url('./images/2018_audi_a3.avif');
+  background-size:cover;
+  background-position-y:top 40% ;
+
+}
+.item-5{
+  background-image: url('./images/2018_audi_a4.avif');
+  background-size:cover;
+  background-position-y:top 40% ;
+}
+.item-6{
+  background-image: url('./images/2018_audi_s4.jpg');
+  background-size:cover;
+  background-position-y:top 40% ;
+}
+
+
+.grid-item:hover{
+  transform: scale(1.1) rotate(5deg);
+  z-index:1;
+}
+
+.container:hover .grid-item:not(:hover){
+  transform: scale(0.95);
+}
+
+li{
+  margin-bottom:11px;
+  font-size:.84rem;
+  cursor: pointer;
+
+}
+
+.list{
+  /* width:100%; */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+
+.list:hover{
+  border: 1px solid;
+  border-color: hsl(190, 100%, 50%);
+}
+
+
+.slide{
+  flex: 0 0 auto;
+  scroll-snap-align:start;
+  flex-shrink: 0;
+
+}
+.scrol::-webkit-scrollbar{
+  display: none;
+}
+
+.scrol{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrol{
+  -webkit-overflow-scrolling: touch;
+
+}
+.scrol{
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%3, transparent);
+  -webkit-mask-image: linear-gradient((to right, transparent, black 5%, black 95%, transparent));
 }
