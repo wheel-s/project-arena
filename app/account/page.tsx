@@ -85,10 +85,10 @@ const Login = ({setToken, setshow}:props) => {
 
 
   return (
-    <div className=" flex h-fit  justify-center">
-    <div className=" p-8 mt-9">
+    <div className=" flex h-fit justify-center">
+    <div className=" p-8  overflow-y-hidden">
     <div className=" flex min-h-screen items-center justify-center ">
-      <div className={!user?"bg-white max-sm:bg-transparent shadow-3xl -mt-60 p-7 rounded-md flex justify-center":"bg-white -mt-45 shadow-2xl max-sm:bg-transparent  p-7 rounded-md flex justify-start"}>
+      <div className={!user?"bg-white max-sm:bg-transparent shadow-3xl -mt-60 p-7 rounded-md flex justify-center":"bg-white max-sm:bg-transparent -mt-45 shadow-2xl  p-7 rounded-md flex justify-start"}>
         <div className=" text-center"> 
           <h1 className="font-bold -mt-3  text-lg">{!user ?"Sign In":"Sign Up"}</h1>
           <div className="flex  text-[.9rem] lg:text[1rem] rounded-md h-10 mt-5 cursor-pointer bg-[hsl(240,50%,90%)] rounded-tl-2xl rounded-tr-2xl">

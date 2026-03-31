@@ -71,7 +71,7 @@ const Menu = ({click}:any) => {
                 <FaSearch size={18} className='fixed mt-2.5 ml-10 md:ml-17 lg:ml-35 text-white'/>
             </div>
             <div className="w-full px-6 md:px-10 lg:px-30">
-                <input type="text"  className=' w-full h-10 font-[monospace] text-white text-start px-20 text-[1rem] outline-white outline-1 rounded-sm' placeholder='Search for ◓Arena'/>
+                <input type="text"  className=' w-full h-10 tracking-wider text-white text-start px-14 text-[.94rem] outline-white outline-1 rounded-sm' placeholder='Search for ◓Arena'/>
             </div>
         </div>
        }
@@ -80,22 +80,22 @@ const Menu = ({click}:any) => {
             <div className=""> 
              <Link href={'/'} className='flex  '>   
              <FaCar size={28} className=" mr-1 text-cyan-800"/>
-             <h1 className="font-bold text-[1.2rem] font-stretch-125% text-gray-900 ">◓Arena</h1> 
+             <h1 className="font-bold text-[1.15rem] font-stretch-125% text-gray-900 ">◓Arena</h1> 
              </Link>  
             </div> 
-          <section className="flex gap-7 max-xl:hidden text-[.96rem] cursor-pointer">
+          <section className="flex gap-7 max-xl:hidden text-[.9rem] cursor-pointer">
 
-            <div className='font-bold  bg-cyan-700 rounded-full text-gray-100 px-5 py-2 -mt-1 flex'>
+            <div className='font-bold bg-cyan-700 rounded-full text-gray-100 px-5 py-2 -mt-1 flex'>
               <p>◓Arena for AI</p>
             </div>
 
             <div className='font-bold  mt-1 flex'>
               <p>Products</p>
-              <FaChevronDown className='mt-1 m-1'/>
+              <FaChevronDown size={12} className='mt-1.5 m-1'/>
             </div>
             <div className='font-bold  mt-1  flex'>
               <p>Resources</p>
-              <FaChevronDown className='mt-1 m-1'/>
+              <FaChevronDown size={12} className='mt-1.5 m-1'/>
             </div>
             <div className='font-bold  mt-1  flex'>
               <p>Docs</p>
@@ -120,9 +120,9 @@ const Menu = ({click}:any) => {
           </div>
 
           
-        <div className='mt-1 flex gap-10 cursor-pointer xl:hidden'>
-          <FaSearch size={19} className='' onClick={openSearch}/>
-         {!search && <FaBars size={20} className='scale-x-150 font-light' onClick={openMenu}/>}
+        <div className='mt-1 flex gap-5 cursor-pointer xl:hidden'>
+          <FaSearch size={18} className='' onClick={openSearch}/>
+         {!search && <FaBars size={17} className='scale-x-180 font-light' onClick={openMenu}/>}
         </div>
          
         </div>
@@ -131,10 +131,10 @@ const Menu = ({click}:any) => {
           <section className="xl:hidden z-10 fixed w-full grid gap-y-5.5 font-[monospace] text-white text-[1rem] p-5 bg-gray-600">
             <div>
               <div  className='flex justify-between'>
-                <p className='font-[monospace]'>Products</p>
+                <p className='font-sans tracking-wider text-[.9rem] mt-2'>Products</p>
                 <p className='text-[1.6rem] cursor-pointer -mt-2' onClick={openProduct}>{product ? "—" :"+"}</p>
               </div>
-              <div className={product?"mt-6": "mt-6 hidden"}>
+              <div className={product?"mt-6 text-[.75rem] font-sans text-white tracking-wide": "mt-6 hidden"}>
                 <p>My first sass  status " success and the name ot the extra ip anf request and also i havre this stuff i waamma do</p>
               </div>
             </div>
