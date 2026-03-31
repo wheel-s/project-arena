@@ -20,6 +20,48 @@
   }
 }
 
+
+.contain{
+  display: grid;
+  /* width: 100%; */
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+@media(min-width:1265px){
+    .contain{
+    grid-template-columns: repeat(auto-fit, minmax(251px, 1fr)); 
+  }
+
+}
+
+@media(min-width:1020px) and (max-width:1625px){
+    .contain{
+    grid-template-columns: repeat(auto-fit, minmax(201px, 1fr)); 
+  }
+}
+
+@media(min-width:420px) and (max-width:537px){
+    .top{
+    margin-top: 02em;
+  }
+
+}
+@media(max-width:384px){
+    .contain{
+    grid-template-columns: repeat(auto-fit, minmax(131px, 1fr)); 
+  }
+
+}
+
+.cardimg{
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  width: 100%;
+
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -29,10 +71,11 @@ body {
 
 /* 10 bg.png*/
 .background{
-  background: url('./images/viewa.jpg');
+
+  background: none;
   background-position-y:top 50%; 
   background-size: cover;
-  height: 200px;
+  height: 250px;
   
 }
 
@@ -49,12 +92,29 @@ body {
   height: 170px;
 }
 
-@media(min-width:55rem) {
+@media(min-width:880px){
+    .background{
+    background: none; 
+  }
+
+}
+
+@media(min-width:420px) and (max-width:537px){
+  .browse{
+
+    margin-bottom: -1rem;
+  }
+
+}
+
+@media(min-width:55rem) and (max-width:880px) {
   .background{
-    background: url('./images/hero.jpg');
+
+    background: none;
     background-position-y:top 20%; 
     background-size: cover;
-    height: 200px;
+    height: 250px;
+
   
   }
   .background3{
@@ -73,8 +133,7 @@ body {
 }
 
 .glass2{
-  background-color: hsla(210, 80%, 10%, .9);
-  border-radius: 6px;
+  background-color: hsla(210, 80%, 7%, .9);
   border:  1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rbgba(0,0,0,0.1);
@@ -182,9 +241,9 @@ li{
   -webkit-overflow-scrolling: touch;
 
 }
-.scrol{
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%3, transparent);
-  -webkit-mask-image: linear-gradient((to right, transparent, black 5%, black 95%, transparent));
+.scrols{
+  /* mask-image: linear-gradient(to right, transparent, black 5%, black 95%3, transparent);
+  -webkit-mask-image: linear-gradient((to right, transparent, black 5%, black 95%, transparent)); */
 }
 
 

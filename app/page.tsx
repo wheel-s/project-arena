@@ -7,13 +7,11 @@ import car2 from "./images/2018_audi_a3.avif"
 import car3 from "./images/honda.jpg"
 import car5 from "./images/gle.png"
 import totslogo from './images/toyots.png'
-import tes from './images/tesla (1).png'
 import aud from './images/Audi.jpeg'
 import bmw from './images/BMW.jpeg'
-import { FaXTwitter, FaLinkedinIn, FaReddit, FaYoutube, FaInstagram } from "react-icons/fa6";
-
+import Footer from "./components/footer";
 import { useValue } from "./components/carcontext";
-
+import { SiTesla, SiToyota, SiHonda, SiBmw, SiAudi} from "react-icons/si";
 
 
 export default function Home() {
@@ -21,30 +19,35 @@ export default function Home() {
   const {value, setValue} = useValue()
   
   return (
-    <div className="items-center justify-center  font-sans " >
+    <div className="items-center justify-center font-sans " >
         <div className=" hidden mt-5 items-center justify-center">
           <h1>Hello Car_Arena</h1>
         </div>
 
-        <div className="grid justify-center font-sans p-10 background">
-          <div className="-mt-1">
-            <h1  className="-mb-2  font-bold text-[2.2rem] text-[hsl(220,44%,21%)] max-sm:text-[1.5rem] max-sm:mt-5">Discover Your Next Car</h1>
-            <p className="text-[.93rem] m-4 text-center text-stone-500">Search by make, model or year</p>
+        <div className="grid md:flex  justify-center md:justify-around font-sans p-10 background">
+          <div className="mt-5">
+            <h1  className="-mb-2  font-bold text-[2.2rem] font-serif [-webkit-text-stroke:.7px_white] text-transparent max-sm:text-[1.5rem] max-sm:mt-5">Discover Your Next Car</h1>
+            <p className="text-[.93rem] m-4 text-center font-serif text-stone-500">Search by make, model or year</p>
+  
             {/* <div className="flex">
               <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 px-[1.4rem] py-[.35rem] mr-2 rounded-sm text-[.8rem] text-gray-700"/>
               <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white">Search</button>
             </div>  */}
           </div>
-       
-        
+                 <div className=" hidden ">
+              <Image src={car} alt="hero" width={200} className=""/>
+            </div>
+ 
         </div>
 
-        <div className="p-6 bg-white lg:p-10 shadow-2xl ">
-          <h2 className="font-semibold text-[1rem] max-sm:text-[.9rem] -ml-1 mb-8  text-[hsl(240,20%,30%)] ">Featured Cars</h2>
+ 
+        <div className="p-6  bg-white lg:p-10 shadow-xl ">
+          <h2 className="font-semibold text-[1rem] max-sm:text-[.9rem] -ml-1 mb-8  tracking-wide ">Featured Cars</h2>
               
-            <div className="flex justify-center mb-4">
-            <div className="flex overflow-x-auto overflow-y-hidden pl-10.5 scrol justify-start text-[.81rem] gap-8">
-              <div className="bg-[hsl(240,20%,90%)] slide grid-item item-4 list w-60 h-40 rounded-md -ml-10 p-3">
+            <div className="flex xl:justify-center scrol overflow-x-auto overflow-y-hidden mb-4">
+            <div className="flex  text-[.81rem] gap-8 xl:gap-20">
+              <div className="bg-[hsl(240,20%,90%)] slide grid-item item-4 list w-60 h-40 rounded-md  p-3">
+
                 <Image src={car5} alt="latest cars" className="hidden " width={200}/>
                 <p className="font-bold text-center mt-30 text-stone-100">2024 Honda CR. V</p>
               </div>
@@ -64,37 +67,43 @@ export default function Home() {
      
           </div>
         </div>
-         <div className="p-5 bg-[hsl(240,20%,90%)]">
-            <h1 className="font-semibold text-[hsl(240,20%,30%)] tracking-wide md:text-[.9rem]">Browse by Brand</h1>
-            <div className="mt-2 gap-10 overflow-x-auto max-sm:pl-28 pr-10 scrol md:gap-30 flex justify-center items-center bg-white shadow-2xl h-20 rounded-md">
-              <Link href={'/car'} className="-mt-1" onClick={()=>setValue("toyota")}>
-                <Image src={totslogo} width={58} alt="toyota logo"/>
-                <p className="text-red-500 ml-2.5 font-bold mt-2">Toyota</p>   
-              </Link>
-              <Link href={'/car'} onClick={()=>setValue("bmw")}>
-                <Image src={bmw} width={35} alt="bmw logo"/>
-                <p className="ml-0.75 font-bold mt-1.5">Bmw</p>   
-              </Link>
-              <Link href={'/car'} className="-mt-1" onClick={()=>setValue("honezzee")}>
-                <Image src={totslogo} width={58} alt="honda logo"/>
-                <p className="ml-2 font-bold mt-1.75">Honda</p>   
-              </Link>           
-              <Link href={'/car'} className="-mt-2" onClick={()=>setValue('tesla')}>
-                <Image src={tes} width={50} alt="tesla logo"/>
-                <p className="ml-2.5 font-bold">Tesla</p>   
-              </Link>
-              <Link href={'/car'} className="-mt-2" onClick={()=>setValue("audi")}>
-                <Image src={aud} width={58} alt="audi logo" />
-                <p className="ml-3.5 font-bold mt-1">Audi</p>   
-              </Link> 
 
+         <div className="p-5 font-sans">
+            <h2 className="font-semibold text-[hsl(240,20%,30%)] tracking-wide text-[.9rem]">Browse by Brand</h2>
+            <div className=" gap-15 scrol overflow-x-auto  rounded-md">
+              <div className="mt-8 mb-4 gap-15 lg:gap-30 md:gap-20 max-sm:gap-10 md:justify-center flex min-w-0">
+                <Link href={'/car'} className="bg-slate-200 py-3.5 px-8" onClick={()=>setValue('Tesla')}>
+                  <SiTesla size={25}/>
+                  {/* <p className="mt-1 font-bold">Tesla</p>    */}
+                </Link>
+                <Link href={'/car'} className="bg-slate-200 py-2.5 px-7" onClick={()=>setValue("Toyota")}>
+                  <SiToyota size={35}/>
+                  {/* <p className="font-bold mt-.5 -ml-.5">Toyota</p>    */}
+                </Link>
+                <Link href={'/car'} className="bg-slate-200 py-1 px-6.5" onClick={()=>setValue("Audi")}>
+                  <SiAudi size={50} className=""/>
+                  {/* <p className="ml-3.5 font-bold mt-1">Audi</p>    */}
+                </Link> 
+                <Link href={'/car'} className="bg-slate-200 py-2.5 px-8" onClick={()=>setValue("Honda")}>
+                  <SiHonda size={30}/>
+                  {/* <p className="-ml-1 font-bold mt-1">Honda</p>    */}
+                </Link>   
+                <Link href={'/car'} onClick={()=>setValue("bmw")} className="-mt-1 bg-slate-200 py-3.5 px-8">
+                  <SiBmw size={34}/>
+                  {/* <p className="ml-0.75 font-bold mt-1">Bmw</p>    */}
+                </Link>
+
+
+              </div>
             </div>
          </div>
          <div className="p-5 bg-white mb-15 shadow-2xl">
-            <h1 className="font-bold text-[1rem]  tracking-wide mb-5 text-[hsl(240,20%,30%)]">Latest Cars</h1>
-            <div className="flex justify-center">
-            <div className="flex overflow-x-auto overflow-y-hidden pl-10.5 scrol justify-start text-[.81rem] gap-8">
-              <div className="bg-[hsl(240,20%,90%)] slide grid-item item-5 list w-60 h-40 rounded-md -ml-10 p-3">
+
+            <h2 className="font-semibold text-[1rem] max-sm:text-[.9rem] -ml-1 mb-8  text-[hsl(240,20%,30%)]  tracking-wide">Latest Cars</h2>
+            <div className="flex scrol mb-2 overflow-x-auto overflow-y-hidden  xl:justify-center">
+            <div className="flex  justify-center text-[.81rem] gap-8 lg:gap-20">
+              <div className="bg-[hsl(240,20%,90%)] slide grid-item item-5 list w-60 h-40 rounded-md p-3">
+
                 <Image src={car5} alt="latest cars" className="hidden " width={200}/>
                 <p className="font-bold text-center mt-30 text-stone-100">2024 Honda CR. V</p>
               </div>
@@ -114,120 +123,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid justify-center  h-80 -mt-10  background2">
-            <div className="p-6">
-              <h1 className="font-bold  text-[hsl(226,0%,19%)] text-[1.3rem] text-center">Compare Cars Side by Side</h1>
-              <p className="text-[.75rem] text-gray-200 mt-3 items-center">Find and compare your favourite cars easily.</p>
-              <Link href={'/car/compare'}><button className="text-white rounded-sm mt-5 ml-13 bg-blue-700 w-40  h-9 cursor-pointer">Compare Now</button></Link>
-            </div>
- 
-          </div>
-          <div className="p-5 bg-[hsl(240,20%,89%)]  shadow-2xl">
-              
-              <div className="mt-10 md:flex justify-around ">
-                <div className="">
-                  <h1 className="text-[1.1rem] font-bold tracking-wider">Car◓Arena</h1>
-                  <div className="mt-7 cursor-pointer flex gap-6">
-                    <FaXTwitter size={22} className=" font-light text-black bg-gray-100  rounded-full p-1"/>
-                    <FaYoutube size={24} className="-mt- bg-gray-100 text-red-400 rounded-full p-1"/>
-                    <FaInstagram size={24} className="-mt- font-light  bg-gray-100   rounded-full p-1"/>
-                    <FaLinkedinIn size={24} className="-mt- text-cyan-900 font-light bg-gray-100  rounded-full p-1"/>
-                    <FaReddit size={24} className="-mt- font-light bg-gray-100 text  rounded-full p-1"/>
 
-                  </div>
-                </div>
+  
 
-                <div className="grid gap-9 md:-mt-8">
-                
-                  <div className="flex justify-between lg:gap-39 md:gap-30">
-          
-                    <div className="">
-                      <h1 className="font-sans tracking-wide text-[.8rem] mt-8 font-bold mb-3">Platform</h1>
-                      <ul>
-                        <li>The Engine Room</li>
-                        <li>API Documentation</li>
-                        <li>Editorial Standards</li>
-                        <li></li>
-                      </ul>
-                    </div>
+          <Footer/>
 
-                    <div className="px-1">
-                    <h1 className="tracking-wide text-[.8rem] -mr-2  mt-8 font-semibold text-end mb-4">Data  & Intelligence</h1>
-                    <ul className="text-start max-w-40 px-1">
-                      <li>Performance Specs</li>
-                      <li>Reliability Index</li>
-                      <li>health care</li>
-                      <li>All Databases</li>
-                    </ul>
-                    </div>
-
-             
-                </div>
-
-                
-                <div className="flex -mt-15 justify-between">
-              
-                  <div className=" mt-5">
-                    <h1 className="tracking-wide text-[.8rem]  font-bold mb-2">Company</h1>
-                    <ul>
-                      <li>Our Intelligence team</li>
-                      <li>Our Methodology</li>
-                      <li>News Room</li>
-                      {/* <li>Reviews</li> */}
-                 
-                    </ul>
-                  </div>
-
-                  <div className="px-3.5 mt-5 mb-2 ">
-                   <h1 className="tracking-wide text-[.8rem] ml-1 mt-8 font-bold mb-2">Compare</h1>
-                  <ul className="text-start max-w-40 mb-2 px-1.5">
-                      <li>Head-to-head</li>
-                      <li>Market Alternatives</li>
-                      <li>The Arena Score</li>
-                      <li>Trim Level Audit</li>
-                  </ul>
-                  </div>
-
-                </div>
-
-                 <div className="flex -mt-17 justify-between">
-              
-                  <div className="-mt-14">
-                    <h1 className="tracking-wide text-[.8rem] mt-8 font-bold mb-3">Connect</h1>
-                    <ul>
-                      <li>The Pit Stop</li>
-                      <li>Research Inquires</li>
-                      <li>Media kit</li>
-                      <li>Manufacturer Outreach</li>
-                      <li>Industry Solutions</li>
-                      <li>Brand Solutions</li>
-                      {/* <li>Corporate Inquiry</li>                      */}
-                      <li></li>
-                    </ul>
-                  </div>
-
-                  <div className="px-4.5 mt-3">
-                   <h1 className="tracking-wide text-[.8rem] mt-8 font-bold mb-3">Resources</h1>
-                  <ul className="text-start max-w-40 mb-2 px-0.5">
-                    <li>Technical Glossary</li>
-                    <li>Community Forums</li>
-                    <li>Platform Status</li>
-                    <li></li>
-                  </ul>
-                  </div>
-
-                </div>
-
-              </div>
-        
-        
-            </div>
-
-              
-
-            
-            <p className="m text-center mt-20 text-[.8rem] text-[hsl(240,20%,40%)]">© 2026 Car Arena.  All rights reserved</p>
-          </div>
     </div>
   );
 }

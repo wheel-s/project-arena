@@ -4,6 +4,7 @@ import Image from "next/image";
 import Menu from '../components/menu'
 import car3 from "../images/honda.jpg"
 import car5 from "../images/gle.png"
+import carr from '../images/2018_audi_s4.jpg'
 import Footer from "../components/footer";
 import Button from '../ui/Button';
 import get_car from './next' 
@@ -11,36 +12,36 @@ import { useEffect, useState } from 'react';
 import { useValue } from "@/app/components/carcontext"
 import useStore from '../components/zustand';
 import { FaBookmark } from 'react-icons/fa';
+import Env from '../Env';
+import { useSingle } from '../components/SingleCarContex';
 
 
 const Page = () => {
 
-
+    const url = Env()
     const {value, setValue} = useValue()
-
+    const {car, setCar} = useSingle()
     const name = useStore((state)=>state.name)
     const setName = useStore((state)=>state.setName)
 
      
     let limit =9
 
-    const down = ():void=>{
-        limit -1
-        console.log(limit)
-    }
+
     const getDetails = (unique_name:string)=>{
         console.log(unique_name)
         setName(unique_name)
     }
 
     const [data, setData] = useState<any[]>()
+    const [count, setCount] = useState<number>(2)
     const [page, setpage]=useState<number>(1)
     const [selected , setselected] = useState<string>('')
    
     async function filter_by_brand(value:string){
          
 
-        const response = await fetch(`http://127.0.0.1:8000/brands/cars?name=${value}&limit=${limit}&page=${page}`)
+        const response = await fetch(`${url}/brands/cars?name=${value}&limit=${limit}&page=${page}`)
                 
             if(!response.ok){
                 console.log("whyyy!!!!!!!!")
@@ -51,11 +52,11 @@ const Page = () => {
             }else{
             const data  = await response.json()
             console.log(data)
-            setData(data)
+            setData(data.data)
+   
 
         }
     }
-
 
 
 
@@ -63,7 +64,7 @@ const Page = () => {
 
         async function get_car(limit:number, page:number){
 
-            const response = await fetch(`http://127.0.0.1:8000/cars?limit=${limit}&page=${page}`)
+            const response = await fetch(`${url}/cars?limit=${limit}&page=${page}`)
                 
             if(!response.ok){
                     console.log("whyyy!!!!!!!!")
@@ -72,14 +73,25 @@ const Page = () => {
                 const data  = await response.json()
 
                 console.log(data)
+<<<<<<< HEAD
                 setData(data.data)
+=======
+                setCount(data.count) 
+                setData(data.data)
+                console.log(data.data[0].unique_name.split('_')[0])
+                setBrand(data.data[0].unique_name.split('_')[0])
+>>>>>>> 09e86d3 (adapted to mobile)
                 
         }
-    
+        
+   
+
+       
   
         if(value){
-            console.log()
+            console.log(value)
             filter_by_brand(value)
+            {value && setBrand(value)}
         }else{
             get_car(limit, page)
         }
@@ -87,7 +99,34 @@ const Page = () => {
     },[page])
     // console.log(data)
  
+const [search, setSearch] = useState<string>()
+    const browse = async(browse:string)=>{
+        console.log('browse')
+        console.log(browse)
 
+        if(!browse || browse ==''){
+            console.log("why!!!")
+              setSearch('')
+            return "whyy!!!!"
+          
+            
+        }
+        const response = await fetch(`${url}/brands/cars?name=${browse}`)
+        const data = await response.json()
+        setData(data)
+        console.log(data)
+        setSearch('')
+    }
+
+    const totalPage = Math.ceil(count/limit)
+    const [num, setNum] = useState(1)
+    const [brand, setBrand] = useState<string>('')
+    const [model, setModel] = useState<string>()
+    const [year, setYear] = useState<string>()   
+  
+
+    const nerw = [1, 2, 3]
+ 
 
   return (
     <div>
@@ -107,6 +146,7 @@ const Page = () => {
                     <div className='mb-5 '>
                         <Link href={'/car/detail'}> <h1 className='-mb-8 text-[1.2rem]' >Filter</h1></Link>
                         <div className="flex  max:md:justify-center md:ml-69 lg:ml-79">
+<<<<<<< HEAD
                             <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"/>
                             <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white">Search</button>
                         </div> 
@@ -143,6 +183,78 @@ const Page = () => {
 
 
                 <section className='flex '>
+=======
+                            <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"
+                                value={search}
+                                onChange={(e)=>setSearch(e.target.value)}
+                            />
+                            <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white" onClick={()=>browse(search || '')}>Search</button>
+                        </div> 
+                     </div>
+                    
+                 <div className='flex justify-around'>
+                    <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
+             
+                     <select name="Brands" id="Brands"  className='outline-0'
+                        value={brand} 
+                        onChange={(e)=>{
+                            setBrand(e.target.value)
+                            browse(e.target.value)  
+                        }}
+                     >
+                        <option value="" disabled>Brands</option>
+                        <option value="Toyota" >Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Audi">Audi</option>
+                     </select>
+ 
+
+                    </div>    
+                     <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
+                        <select name="Model" id="model"
+                            value={model} 
+                            onChange={(e)=>setModel(e.target.value)}
+                        >
+
+                            <option value="" >Model</option>
+                            {
+                                data && data.map((item)=>{
+                                    return(
+                                        <option key={item.id} value="Tesla">{item.model}</option>
+                                    )
+                                })
+                            }
+                        </select>                   
+                    </div>
+                    <div className='bg-[hsl(230,24%,97%)] px-10 md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 py-1.5 mb-5'>
+                        <select name="Year" id="year"
+                            value={year} 
+                            onChange={(e)=>setYear(e.target.value)}
+                            disabled={brand==''}
+                        >
+                            <option value="">Year</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                    </div>
+                    <div className='bg-[hsl(230,24%,27%)] hidden text-stone-100 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900  justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
+                        <button onClick={()=>browse('audi')}>Search</button>                 
+                    </div>
+              
+
+                </div>
+
+
+                <section className='flex mt-5'>
+>>>>>>> 09e86d3 (adapted to mobile)
                 
                     <div className='bg-white max-md:hidden w-90 mr-6 p-2 px-4 rounded-sm'>
                        <h1>Make</h1> 
@@ -164,7 +276,7 @@ const Page = () => {
                             setselected(e.target.value)
                             filter_by_brand(e.target.value)
                         }}/>
-                        <p className='ml-2'>Honoda</p>
+                        <p className='ml-2'>Honda</p>
                        </div>
                          <div className='mt-3 flex'>
                         <input type="checkbox" checked={selected ==='audi'} value={'audi'} 
@@ -236,6 +348,7 @@ const Page = () => {
                           
                         </div>
                     </div>
+<<<<<<< HEAD
                  
                       
                     <div className='bg-whit  justify-center rounded-sm w-full -5' >
@@ -249,6 +362,25 @@ const Page = () => {
                                     <FaBookmark className='text-[hsl(240,24%,80%)]'/>
                                     <Image src={car5} alt="latest cars" className='hidden' width={230}/>
                                     <p className="text-sm down text mt-24 md:mt-26 max-sm:mt-24 text-[.75rem] font-bold">{item.unique_name}</p>
+=======
+        
+                    <div className='bg-whit  justify-center rounded-sm w-full -5' >
+                      
+                      
+                        <div className="  contain">
+                          {data && data.map((item:any):any=>{
+                            return(
+                            <Link key={item.id} href="/car/detail" className='card'
+                             onClick={()=>{
+                                getDetails(item.model)
+                                setCar(item)
+                                console.log(car)
+                                }} > 
+                                <div  className="  ">
+                                    <FaBookmark className='text-[hsl(240,24%,80%)]'/>
+                                    <Image id='image' src={item.images?.[0]} height={230} alt="latest cars " className='-mt-4 browse  w-200 rounded-md max-sm:w-100 xl:w-90 lg:w-200 ' width={150}/>
+                                    <p className="text-sm  top mt-1  text-[.75rem] font-bold ">{item.unique_name}</p>
+>>>>>>> 09e86d3 (adapted to mobile)
                                 </div>
                             </Link>
                             )
@@ -259,14 +391,24 @@ const Page = () => {
                      </div>
                      
 
-                        <div className="mt-10 cursor-pointer mb-5 flex justify-center lg:text-[1rem]">
-                            <p className="mr-3 text-[.9rem] mt-1" >Prev</p> 
-                            <Button text='1' color='gray' onClick={down}  style='text-white cursor pointer ml-2 mt- py-1 px-2.5 shadow-2xl bg-blue-500 rounded-sm'/>
+                        <div className="mt-18 cursor-pointer mb-15 flex justify-center lg:text-[1rem]">
+                            <button className="mr-3 text-[.9rem] mt-1 cursor-pointer" onClick={()=>setpage(page-1)} disabled={page===1}>Prev</button> 
+                            {
+                                nerw &&
+                            nerw.map((item)=>{
+                                return(
+                                    
+                                      <button key={item} className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm" onClick={()=>setpage(item)} disabled={page ===item || totalPage < item}>{item}</button>
+                                )
+                            })
+
+                            }
+                            {/* <Button text='1' color='gray' onClick={()=>setpage(1)}  style='text-white cursor pointer ml-2 mt- py-1 px-2.5 shadow-2xl bg-blue-500 rounded-sm' disabled={page ===1 || totalPage<1}/> */}
                             {/* <button className="text-white cursor-pointer ml-2 py-.5 px-2.5 shadow-2xl bg-blue-500 rounded-sm" onClick={()=>page=page}>1</button> */}
-                            <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm" onClick={()=>setpage(page+1)}>2</button>
-                            <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm">3</button>
-                            <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm">4</button>
-                            <button className=" text-[.88rem] cursor-pointer ml-4 py-.8 px-3.5 shadow-2xl bg-gray-200 rounded-sm">Next</button>
+                            {/* <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm" onClick={()=>setpage(2)} disabled={page ===2 || totalPage<2}>2</button>
+                            <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm"onClick={()=>setpage(3)} disabled={page===3 || totalPage<3}>3</button>
+                            <button className="text-blue-900 cursor-pointer ml-2 py-.5 px-2.5 bg-gray-200 rounded-sm"onClick={()=>setpage(4)} disabled={page===4 || totalPage<4}>4</button> */}
+                            <button className=" text-[.88rem] cursor-pointer ml-4 py-.8 px-3.5 shadow-2xl bg-gray-200 rounded-sm" onClick={()=>setpage(page+1)} disabled={page<5}>Next</button>
                          </div>
                     </div>
                    
