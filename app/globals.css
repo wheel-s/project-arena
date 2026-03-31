@@ -29,8 +29,8 @@ body {
 
 /* 10 bg.png*/
 .background{
-  background: url('./images/bg.png');
-  background-position-y:top 10%; 
+  background: url('./images/viewa.jpg');
+  background-position-y:top 50%; 
   background-size: cover;
   height: 200px;
   
@@ -51,8 +51,11 @@ body {
 
 @media(min-width:55rem) {
   .background{
-    height:200px;
-    background-position-y:top 40%;
+    background: url('./images/hero.jpg');
+    background-position-y:top 20%; 
+    background-size: cover;
+    height: 200px;
+  
   }
   .background3{
   background: url('./images/bg.png');
@@ -91,12 +94,11 @@ body {
 .grid-item{
   aspect-ratio:1;
   background:hsl(240, 20%, 30%);
-  border-radius:10px;
+  border-radius:6px;
   transition: transform 0.3s ease;
   transform-origin: center;
   box-shadow: 3px 5px 5px rgba(0,0,0,0,0.15);
   
-
 }
 
 
@@ -142,7 +144,7 @@ body {
 
 li{
   margin-bottom:11px;
-  font-size:.84rem;
+  font-size:.68rem;
   cursor: pointer;
 
 }
@@ -183,4 +185,71 @@ li{
 .scrol{
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%3, transparent);
   -webkit-mask-image: linear-gradient((to right, transparent, black 5%, black 95%, transparent));
+}
+
+
+
+.mobile{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width:33.625rem) {
+  .mobile{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* .size{
+    height: 30;
+    width: 45;
+  } */
+}
+@media (min-width:26.25rem) and (max-width:33.625rem) {
+  .mobile{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .size{
+    height: 7rem;
+    width: 12rem
+  }
+  .down{
+    margin-top: 6rem;
+    color:black;
+  }
+}
+@media (min-width:640px) and (max-width:768px){ 
+  .down{
+    margin-top: 6.5rem;
+    color:black;
+  }
+}
+
+
+@media (min-width:768px) and (max-width:860px){ 
+  .size{
+    height: 7rem;
+    width: 10rem;
+
+  }
+
+}
+@media (min-width:980px) and (max-width:1164px){ 
+  .size{
+    height: 7rem;
+    width: 15rem;
+
+  }
+}
+@media (min-width:1400px){ 
+  .mobile{
+    grid-template-columns: repeat(4, 2fr);
+  }
+}
+
+
+
+@media (max-width:1400px){ 
+  .mob{
+    display: flex;
+    padding-left: 10rem;
+  }
 }
