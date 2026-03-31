@@ -70,8 +70,9 @@ const Page = () => {
                     setData([])
                 }
                 const data  = await response.json()
+
                 console.log(data)
-                setData(data)
+                setData(data.data)
                 
         }
     
@@ -103,17 +104,47 @@ const Page = () => {
             <p className=' text-[.86rem]  ml-3 -mt-8 mb-4' >Home / Cars</p>
 
             <div className='p-5 -mt-1 bg-[hsl(240,10%,90%)] mb-6'>
-                        <div className='mb-5 '>
-                    <Link href={'/car/detail'}> <h1 className='-mb-8 text-[1.2rem]' >Filter</h1></Link>
-                      <div className="flex ml-69 lg:ml-79">
-                        <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"/>
-                        <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white">Search</button>
-                      </div> 
-            </div>
+                    <div className='mb-5 '>
+                        <Link href={'/car/detail'}> <h1 className='-mb-8 text-[1.2rem]' >Filter</h1></Link>
+                        <div className="flex  max:md:justify-center md:ml-69 lg:ml-79">
+                            <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"/>
+                            <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white">Search</button>
+                        </div> 
+                     </div>
                     
-                <section className='flex'>
+                 <div>
+                    <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm p-4 mb-5'>
+
+             
+                     <select name="Brands" id="Brands">
+                        <option value="main">Brands</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Tesla">Tesla</option>
+                     </select>
+                     <select name="Model" id="model">
+                        <option value="main">Model</option>
+                     </select>
+                     <select name="Year" id="year">
+                        <option value="Year">Year</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                     </select>
+
+                    </div>    
+                </div>
+
+
+                <section className='flex '>
                 
-                    <div className='bg-white w-90 mr-6 p-2 px-4 rounded-sm'>
+                    <div className='bg-white max-md:hidden w-90 mr-6 p-2 px-4 rounded-sm'>
                        <h1>Make</h1> 
                        <div className='mt-3 flex'>
                         <input type="checkbox"/>
@@ -200,32 +231,32 @@ const Page = () => {
                             </div>
                             <hr className='mt-3 text-stone-400'/>
                             <div className="flex justify-center mt-5">
-                                  <button className="bg-blue-700 font-semibold text-gray-100 text-[.9rem] p-2 tracking- px-16 rounded-md">Clear All</button>
+                                  <button className="bg-blue-700 font-semibold text-gray-100 text-[.9rem] p-2 tracking- px-8 lg:px-11 rounded-md">Clear All</button>
                             </div>
                           
                         </div>
                     </div>
                  
                       
-                    <div className='bg-white rounded-sm w-full p-5' >
+                    <div className='bg-whit  justify-center rounded-sm w-full -5' >
                       
                       
-                        <div className="grid grid-cols-3 gap-y-8 gap-x-2.5">
+                        <div className="grid justify-center mobile  gap-y-8 gap-x-5.5">
                           {data && data.map((item:any):any=>{
                             return(
-                            <Link key={item.id} href="/car/detail" onClick={()=>getDetails(item.unique_name)}> 
-                                <div  className="bg-gray-200 grid-item item-4 h-45 lg:w-70 w-50  rounded-sm p-2">
-                                    <FaBookmark/>
+                            <Link key={item.id} href="/car/detail" onClick={()=>getDetails(item.unique_name)} > 
+                                <div  className="bg-gray-200 size grid-item item-4  h-35 max-sm:h-27  max-lg:h-30 max-lg:w- max-sm:w-40 lg:w-70 w-45  rounded-sm p-2">
+                                    <FaBookmark className='text-[hsl(240,24%,80%)]'/>
                                     <Image src={car5} alt="latest cars" className='hidden' width={230}/>
-                                    <p className="text-sm font-bold">{item.year} Audi {item.model}</p>
+                                    <p className="text-sm down text mt-24 md:mt-26 max-sm:mt-24 text-[.75rem] font-bold">{item.unique_name}</p>
                                 </div>
                             </Link>
                             )
                           })}
 
       
-                        </div>
-                
+                        
+                     </div>
                      
 
                         <div className="mt-10 cursor-pointer mb-5 flex justify-center lg:text-[1rem]">
