@@ -74,12 +74,10 @@ const Page = () => {
 
                 console.log(data)
 
-
                 setCount(data.count) 
                 setData(data.data)
                 console.log(data.data[0].unique_name.split('_')[0])
                 setBrand(data.data[0].unique_name.split('_')[0])
-
 
                 
         }
@@ -147,153 +145,43 @@ const [search, setSearch] = useState<string>()
                         <Link href={'/car/detail'}> <h1 className='-mb-8 text-[1.2rem]' >Filter</h1></Link>
                         <div className="flex  max:md:justify-center md:ml-69 lg:ml-79">
 
-
-                            <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"
-                                value={search}
-                                onChange={(e)=>setSearch(e.target.value)}
-                            />
-                            <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white" onClick={()=>browse(search || '')}>Search</button>
-
-            </div> 
-                     </div>
-                    
-                 <div className='flex justify-around'>
-                    <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
-             
-                     <select name="Brands" id="Brands"  className='outline-0'
-                        value={brand} 
-                        onChange={(e)=>{
-                            setBrand(e.target.value)
-                            browse(e.target.value)  
-                        }}
-                     >
-                        <option value="" disabled>Brands</option>
-                        <option value="Toyota" >Toyota</option>
-                        <option value="Honda">Honda</option>
-                        <option value="Tesla">Tesla</option>
-                        <option value="Audi">Audi</option>
-                     </select>
- 
-
-                    </div>    
-                     <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
-                        <select name="Model" id="model"
-                            value={model} 
-                            onChange={(e)=>setModel(e.target.value)}
-                        >
-
-                            <option value="" >Model</option>
-                            {
-                                data && data.map((item)=>{
-                                    return(
-                                        <option key={item.id} value="Tesla">{item.model}</option>
-                                    )
-                                })
-                            }
-                        </select>                   
-                    </div>
-                    <div className='bg-[hsl(230,24%,97%)] px-10 md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 py-1.5 mb-5'>
-                        <select name="Year" id="year"
-                            value={year} 
-                            onChange={(e)=>setYear(e.target.value)}
-                            disabled={brand==''}
-                        >
-                            <option value="">Year</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                        </select>
-                    </div>
-                    <div className='bg-[hsl(230,24%,27%)] hidden text-stone-100 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900  justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
-                        <button onClick={()=>browse('audi')}>Search</button>                 
-                    </div>
-              
-
-                </div>
-
-
-
-                <section className='flex mt-5'>
-
-                <section className='flex '>
-
-                            <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"
-                                value={search}
-                                onChange={(e)=>setSearch(e.target.value)}
-                            />
-                            <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white" onClick={()=>browse(search || '')}>Search</button>
+                            <input type="text" placeholder="Search for cars..." className="shadow-xl outline-none bg-gray-50 max-md:w-full  py-2 p-2 min-w-[60%] mr-2 lg:min-w-[80%] rounded-sm text-[.8rem] text-gray-700"/>
+                            <button className="bg-blue-700 px-4 rounded-sm  text-[.8rem] text-white">Search</button>
                         </div> 
                      </div>
                     
-                 <div className='flex justify-around'>
-                    <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
+                 <div>
+                    <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm p-4 mb-5'>
+
              
-                     <select name="Brands" id="Brands"  className='outline-0'
-                        value={brand} 
-                        onChange={(e)=>{
-                            setBrand(e.target.value)
-                            browse(e.target.value)  
-                        }}
-                     >
-                        <option value="" disabled>Brands</option>
-                        <option value="Toyota" >Toyota</option>
+                     <select name="Brands" id="Brands">
+                        <option value="main">Brands</option>
+                        <option value="Toyota">Toyota</option>
                         <option value="Honda">Honda</option>
                         <option value="Tesla">Tesla</option>
-                        <option value="Audi">Audi</option>
                      </select>
- 
+                     <select name="Model" id="model">
+                        <option value="main">Model</option>
+                     </select>
+                     <select name="Year" id="year">
+                        <option value="Year">Year</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                     </select>
 
                     </div>    
-                     <div className='bg-[hsl(230,24%,97%)] md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
-                        <select name="Model" id="model"
-                            value={model} 
-                            onChange={(e)=>setModel(e.target.value)}
-                        >
-
-                            <option value="" >Model</option>
-                            {
-                                data && data.map((item)=>{
-                                    return(
-                                        <option key={item.id} value="Tesla">{item.model}</option>
-                                    )
-                                })
-                            }
-                        </select>                   
-                    </div>
-                    <div className='bg-[hsl(230,24%,97%)] px-10 md:hidden text-stone-900 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900 flex justify-around rounded-sm max-sm:px-4 py-1.5 mb-5'>
-                        <select name="Year" id="year"
-                            value={year} 
-                            onChange={(e)=>setYear(e.target.value)}
-                            disabled={brand==''}
-                        >
-                            <option value="">Year</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                        </select>
-                    </div>
-                    <div className='bg-[hsl(230,24%,27%)] hidden text-stone-100 font-sans text-sm tracking-wide shadow-2xl ring-[.2px] ring-cyan-900  justify-around rounded-sm max-sm:px-4 px-10 mb-5'>
-                        <button onClick={()=>browse('audi')}>Search</button>                 
-                    </div>
-              
-
                 </div>
 
 
-                <section className='flex mt-5'>
-  
+                <section className='flex '>
+            
                     <div className='bg-white max-md:hidden w-90 mr-6 p-2 px-4 rounded-sm'>
                        <h1>Make</h1> 
                        <div className='mt-3 flex'>
@@ -386,46 +274,20 @@ const [search, setSearch] = useState<string>()
                           
                         </div>
                     </div>
-
+    
+                      
                     <div className='bg-whit  justify-center rounded-sm w-full -5' >
                       
                       
-                        <div className="  contain">
+                        <div className="grid justify-center mobile  gap-y-8 gap-x-5.5">
                           {data && data.map((item:any):any=>{
                             return(
-                            <Link key={item.id} href="/car/detail" className='card'
-                             onClick={()=>{
-                                getDetails(item.model)
-                                setCar(item)
-                                console.log(car)
-                                }} > 
-                                <div  className="  ">
+                            <Link key={item.id} href="/car/detail" onClick={()=>getDetails(item.unique_name)} > 
+                                <div  className="bg-gray-200 size grid-item item-4  h-35 max-sm:h-27  max-lg:h-30 max-lg:w- max-sm:w-40 lg:w-70 w-45  rounded-sm p-2">
                                     <FaBookmark className='text-[hsl(240,24%,80%)]'/>
-
-                                    <Image id='image' src={item.images?.[0]} height={230} alt="latest cars " className='-mt-4 browse  w-200 rounded-md max-sm:w-100 xl:w-90 lg:w-200 ' width={150}/>
-                                    <p className="text-sm  top mt-1  text-[.75rem] font-bold ">{item.unique_name}</p>
-
-
                                     <Image src={car5} alt="latest cars" className='hidden' width={230}/>
                                     <p className="text-sm down text mt-24 md:mt-26 max-sm:mt-24 text-[.75rem] font-bold">{item.unique_name}</p>
 
-        
-                    <div className='bg-whit  justify-center rounded-sm w-full -5' >
-                      
-                      
-                        <div className="  contain">
-                          {data && data.map((item:any):any=>{
-                            return(
-                            <Link key={item.id} href="/car/detail" className='card'
-                             onClick={()=>{
-                                getDetails(item.model)
-                                setCar(item)
-                                console.log(car)
-                                }} > 
-                                <div  className="  ">
-                                    <FaBookmark className='text-[hsl(240,24%,80%)]'/>
-                                    <Image id='image' src={item.images?.[0]} height={230} alt="latest cars " className='-mt-4 browse  w-200 rounded-md max-sm:w-100 xl:w-90 lg:w-200 ' width={150}/>
-                                    <p className="text-sm  top mt-1  text-[.75rem] font-bold ">{item.unique_name}</p>
 
                                 </div>
                             </Link>

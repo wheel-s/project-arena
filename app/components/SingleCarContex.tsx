@@ -16,7 +16,7 @@ type car = {
   car:CarDetails | {}
   setCar:(v:CarDetails)=>void
 
-
+}
 
 const SingleContext = createContext<car>({
     car:{},
