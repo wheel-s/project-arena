@@ -3,6 +3,7 @@ import { createContext, useState, useContext } from "react";
 
 
 
+
 type CarDetails={
   images?:string[],
   model?:string,
@@ -14,7 +15,8 @@ type CarDetails={
 type car = {
   car:CarDetails | {}
   setCar:(v:CarDetails)=>void
-}
+
+
 
 const SingleContext = createContext<car>({
     car:{},
@@ -24,7 +26,9 @@ const SingleContext = createContext<car>({
 
 
 export function SingleProvider({children}:{children:React.ReactNode}){
+
       const [car, setCar] = useState<CarDetails |{}>({})
+
 
       return(
         <SingleContext.Provider value={{car, setCar}}>

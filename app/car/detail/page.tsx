@@ -43,9 +43,11 @@ const Page = () => {
 
   },[])
 
+
   const initial = ('images' in car)?car.images?.[0] :car5
   const [cars, setCars] = useState(initial)
   const {images} =car as any
+
 
 
   return (
@@ -60,7 +62,9 @@ const Page = () => {
         <div className="bg-white lg:flex">
           
            <div className="flex justify-center -mt-6 ">
+
             <Image src={cars || car5} alt="" width={300} height={300} className=" mt-4 lg:h-80 lg:w-160 xl:h-100 sm:w-200 sm:h-100  rounded-2xl w-full p-3"/>
+
           </div>
           <div className="flex  p-3 mt-5 text-xl font-serif ">
            <div className="text-blue-800">
@@ -82,8 +86,10 @@ const Page = () => {
              </Link> 
              </div>
             <div className="grid grid-cols-3 gap-3  p-3 justify-center max-sm:mt-4 ">
+
               <Image src={images?.[0] || car5} alt="" width={90} height={90} className="max-sm: rounded-md sm:w-55 sm:h-30 h-18 max-sm:w-ful" onClick={()=>setCars(images?.[0] || car5)}/>
               <Image src={images?.[1] || v2} alt="" width={80} height={80} className="  rounded-md sm:w-50 h-18 sm:h-30 max-sm:w-ful" onClick={()=>setCars(images?.[1] || v2)}/>
+
               <Image src={en} alt="" width={80} height={80} className=" mb-4  rounded-md sm:w-50 h-18 sm:h-30 max-sm:w-ful" onClick={()=>setCars(en)}/>
             
             </div>

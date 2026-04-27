@@ -118,7 +118,9 @@ const Page = () => {
 
     useEffect(()=>{
         setint(1)
+
         if(('model' in car)){
+
          
             setinfo1(car)
             get_sepcs(car.model)
