@@ -100,11 +100,9 @@ useEffect(()=>{
                 <FaSearch size={18} className='fixed mt-2.5 ml-10 md:ml-17 lg:ml-35 text-white'/>
             </div>
             <div className="w-full px-6 md:px-10 lg:px-30">
-<<<<<<< HEAD
-                <input type="text"  className=' w-full h-10 tracking-wider text-white text-start px-14 text-[.94rem] outline-white outline-1 rounded-sm' placeholder='Search for ◓Arena'/>
-=======
+
                 <input type="text"  className=' w-full h-10 tracking-wider text-white text-start px-13 text-[.94rem] outline-white outline-1 rounded-sm' placeholder='Search for ◓Arena'/>
->>>>>>> 09e86d3 (adapted to mobile)
+
             </div>
         </div>
        }
@@ -112,14 +110,11 @@ useEffect(()=>{
           <section className='flex gap-10 on' onClick={()=>setMenu(false)}>
             <div className=""> 
              <Link href={'/'} className='flex  '>   
-<<<<<<< HEAD
-             <FaCar size={28} className=" mr-1 text-cyan-800"/>
-             <h1 className="font-bold text-[1.15rem] font-stretch-125% text-gray-900 ">◓Arena</h1> 
-=======
+
              <FaCar size={30} className=" mr-1 text-gray-500 hidden"/>
              <Image src={logo} alt='autofoocus' width={35} className='-mt-1 rounded-l-full mr-2 rounded-r-full'/>
              <h1 className="font-bold text-[1.15rem] font-serif ">AutoFocus</h1> 
->>>>>>> 09e86d3 (adapted to mobile)
+
              </Link>  
             </div> 
           <section className="flex gap-7 max-xl:hidden text-[.9rem] cursor-pointer">
@@ -165,11 +160,7 @@ useEffect(()=>{
           </div>
 
           
-<<<<<<< HEAD
-        <div className='mt-1 flex gap-5 cursor-pointer xl:hidden'>
-          <FaSearch size={18} className='' onClick={openSearch}/>
-         {!search && <FaBars size={17} className='scale-x-180 font-light' onClick={openMenu}/>}
-=======
+
         <div className='mt-1 flex gap-2 cursor-pointer xl:hidden'>
           <FaSearch size={15} className='mt-0.75 mr-3' onClick={openSearch}/>
             {menu ? <FaX size={18} className='scale-x-143 mt-.5 font-light' onClick={openMenu}/> :<FaBars size={18} className='scale-x-187 mt-,5' onClick={openMenu}/>}
@@ -180,7 +171,6 @@ useEffect(()=>{
              {pic&& <Image src={pic?pic.trim():car} width={200} height={200} alt='profile' className="bg-stone-700 rounded-full w-8 h-8"/>}
             </div>}
        
->>>>>>> 09e86d3 (adapted to mobile)
         </div>
          
         </div>
@@ -189,19 +179,12 @@ useEffect(()=>{
           <section className="xl:hidden z-10 fixed w-full grid gap-y-5.5 tracking-wide text-[1rem] p-5 bg-[hsl(260,12%,89%)] shadow-2xl">
             <div>
               <div  className='flex justify-between'>
-<<<<<<< HEAD
-                <p className='font-sans tracking-wider text-[.9rem] mt-2'>Products</p>
-                <p className='text-[1.6rem] cursor-pointer -mt-2' onClick={openProduct}>{product ? "—" :"+"}</p>
-              </div>
-              <div className={product?"mt-6 text-[.75rem] font-sans text-white tracking-wide": "mt-6 hidden"}>
-                <p>My first sass  status " success and the name ot the extra ip anf request and also i havre this stuff i waamma do</p>
-=======
                 <p className='font- tracking-[1.4px] text-[.9rem] mt-2'>Products</p>
                 <p className='text-[1.6rem] cursor-pointer -mt-2' onClick={openProduct}>{product ? "—" :"+"}</p>
               </div>
               <div className={product?"mt-6 text-[.75rem]": "mt-6 hidden"}>
                 <p className="tracking-[1.8px]">main app</p>
->>>>>>> 09e86d3 (adapted to mobile)
+
               </div>
             </div>
             <hr className='text-stone-500 text-[.1px]'/>
